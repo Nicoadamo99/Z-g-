@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ricerca – Zēgē</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet">
+  <style>
+    .trail {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+  animation: fadeOut 0.4s linear forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+    body {
+      font-family: "Hepta Slab", serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 2rem;
+      cursor: none;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      font-weight: 600;
+    }
+
+
+    h2 {
+      text-align: left;
+      max-width: 900px;
+      margin: auto;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: auto;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 15px;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.nav-link.active {
+  opacity: 1;
+  color: #fff;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+ .credits {
+      margin-top: 2rem; /* Aumenta la distanza dai video */
+      text-align: center;
+      font-size: 14px;
+      padding: 1rem;
+      color: #fff;
+      line-height: 1.2; /* Rende più compatto il testo */
+      font-weight: 300;
+    }
+
+    .credits p {
+      margin: 0.3rem 0; /* Avvicina i paragrafi */
+    }
+
+.img-container {
+  display: flex;
+  justify-content: center; /* centra orizzontalmente */
+  align-items: flex-start;
+  gap: 20px; /* spazio tra le immagini */
+  flex-wrap: wrap; /* va a capo se lo schermo è stretto */
+}
+
+.img-box {
+  text-align: center;
+  max-width: 400px;
+  flex: 1 1 400px; 
+}
+
+.img-box img {
+  width: 400px;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+}
+
+
+.commento {
+  color: #aaa;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+  </style>
+</head>
+<script>
+   document.addEventListener("mousemove", function(e) {
+    const trail = document.createElement("div");
+    trail.className = "trail";
+    trail.style.left = e.pageX + "px";
+    trail.style.top = e.pageY + "px";
+    document.body.appendChild(trail);
+
+    setTimeout(() => {
+      trail.remove();
+    }, 600); // deve corrispondere alla durata dell'animazione
+  });
+
+
+  const path = window.location.pathname;
+  const progettoLink = document.getElementById("link-progetto");
+  const sviluppoLink = document.getElementById("link-sviluppo");
+
+  if (path.includes("index.html") || path.endsWith("/")) {
+    progettoLink.classList.add("active");
+  } else if (path.includes("Ricerca.html")) {
+    sviluppoLink.classList.add("active");
+  }
+
+
+</script>
+<body>
+  <nav class="top-nav">
+  <a href="Ricerca.html" class="nav-link" id="link-sviluppo">Sviluppo Progetto</a>
+  <a href="index.html" class="nav-link" id="link-progetto">Progetto Zēgē</a>
+</nav>
+
+<h1>Il processo di creazione</h1>
+<div class="content">
+  <p>Il progetto Zēgē nasce da un’esigenza precisa: restituire un’esperienza immersiva del fiume Marzenego, unendo tecnologia, dati naturalistici e suono. La costruzione di questo viaggio sensoriale è stata articolata in più fasi, ognuna pensata per valorizzare l’ecologia e la biodiversità del territorio.</p>
+</div>
+
+
+<h2>Tracciamento del percorso del fiume</h2>
+<div class="content">
+<p>Il primo passo è stato quello di tracciare con precisione il corso del fiume Marzenego, seguendolo dalla sua origine a Resana fino al suo arrivo a Mestre. Questo tracciamento ha costituito la base di tutto il progetto, permettendo di costruire un racconto visivo e geografico coerente.</p>
+</div>
+
+<div class="img-container">
+  <div class="img-box">
+    <img src="tracciato.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Tracciato ricavato tramite Placemark Paly </p>
+  </div>
+  <div class="img-box">
+    <img src="tracciato1.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Inserimento tracciato su Foursquare Portal, con padding di 1km</p>
+  </div>
+</div>
+
+<h2>Raccolta dati di flora e fauna</h2>
+<div class="content">
+<p>Successivamente è iniziata la fase di ricerca naturalistica. Sono stati scaricati e analizzati dataset da fonti scientifiche affidabili come iNaturalist, eBird e ISPRA, raccogliendo un totale di 4.204 osservazioni riferite all’area del Consorzio Acque Risorgive del Veneto.
+Una volta ottenuto questo grande archivio di dati, è stato fatto un lavoro di filtraggio e selezione, concentrandosi esclusivamente sulle osservazioni localizzate lungo il corso del Marzenego. Questo ha permesso di costruire una mappatura precisa e significativa della biodiversità fluviale, sia in termini di fauna che di flora.</p>
+</div>
+
+<div class="img-container">
+  <div class="img-box">
+    <img src="dati.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Csv completo delle osservazioni prese da iNaturalis, eBird e ISPRA</p>
+  </div>
+    <div class="img-box">
+    <img src="osservazioni3.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Inserimento Osservazioni su Foursquare Portal</p>
+  </div>
+  <div class="img-box">
+    <img src="osservazioni.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Osservazioni filtrate soltanto per la porzione del fiume Marzenego tramire Foursquare</p>
+  </div>
+</div>
+
+<h2>Visualizzazione dinamica con Mapbox</h2>
+<div class="content">
+<p>Grazie alla piattaforma Mapbox, è stato possibile realizzare un sistema di visualizzazione in cui la mappa segue automaticamente il percorso del fiume. L’idea era quella di creare un movimento fluido, in grado di guidare l’utente lungo il tracciato in modo coinvolgente e realistico. Questa funzionalità sarà poi integrata con i suoni ambientali per completare l’esperienza immersiva.</p>
+</div>
+
+<div class="img-container">
+  <div class="img-box">
+    <img src="mapbox.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Inserimento tracciaot su MapBox </p>
+  </div>
+  <div class="img-box">
+    <img src="codice_camera.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Codice per far muovere la visuale tramite il fiume</p>
+  </div>
+</div>
+
+
+
+<h2>Ricerca e integrazioni dei suoni</h2>
+<div class="content">
+<p>Per arricchire ulteriormente l’esperienza, è stato creato uno script personalizzato in grado di associare a ciascuna specie osservata il relativo suono naturale, attingendo all’archivio sonoro di Xeno-Canto, specializzato nelle registrazioni di vocalizzazioni animali. In totale sono stati integrati 141 suoni, accuratamente selezionati e sincronizzati con il percorso.</p>
+</div>
+
+<div class="img-container">
+  <div class="img-box">
+    <img src="suoni1.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Utilizzo dello script, tramite Anaconda Navigator</p>
+  </div>
+  <div class="img-box">
+    <img src="suoni2.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Tutte le tracce audio trovate e scaricate</p>
+  </div>
+</div>
+
+<h2>Sviluppo del percorso interattivo</h2>
+<div class="content">
+<p>Infine, tramite JavaScript, è stato realizzato il cuore interattivo del progetto. Lungo il tracciato del fiume, la visualizzazione integra ora i suoni sincronizzati con la mappa dinamica. In alto a destra compare un indicatore informativo che mostra, in tempo reale, il nome comune e scientifico della specie che l’utente sta ascoltando e osservando. Inoltre, viene indicata anche la posizione geografica precisa lungo il fiume, offrendo all’utente un orientamento costante e consapevole.</p>
+</div>
+
+<div class="img-container">
+  <div class="img-box">
+    <img src="nomi_luoghi.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Visualizzazione completa del progetto</p>
+  </div>
+  <div class="img-box">
+    <img src="codice_nomi_luoghi.png" alt="Il fiume Marzenego" width="300" height="200">
+    <p class="commento">Codiece per visuoalizzare i nomi scientifici, comuni e la posizione attuale</p>
+  </div>
+</div>
+
+  <div class="credits">
+    <p>Progetto a cura di Nico Adamo</p>
+    <p>Information Design Lab</p>
+    <p>UNIRSM Design</p>
+  </div>
+ </body>
+</html>
